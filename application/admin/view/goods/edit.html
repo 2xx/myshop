@@ -1,0 +1,76 @@
+{extend name="common/default"}
+{block name="main"}
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/admin/goods/update/{$goods.gid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>类别：</th>
+                            <td>
+                                <select name="cate_cid" id="catid" class="required">
+                                {foreach $cates as $k=>$v}
+                                <?php
+									$n = substr_count($v->path,',')-1;
+									if($n < 0) {
+                                       $n = 0;
+									}
+                                ?>
+									<option {if $v.cid==$goods.cate_cid}selected{/if} value="{$v.cid}">{:str_repeat('&nbsp;', $n*5)}|--{$v.cname}</option>
+                                {/foreach}
+                                </select>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>商品名称：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="gname" size="50" value="{$goods.gname}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>定价：</th>
+                                <td><input class="common-text" name="price" size="50" value="{$goods.price}" type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>库存：</th>
+                                <td><input class="common-text" name="stock" size="50" value="{$goods.stock}" type="text"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>缩略图：</th>
+                                <td>
+                                    <input name="smallimg" id="" type="file">
+                                    <img src="{:config('disp_path').$goods->smgpic}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>状态：</th>
+                                <td>
+                                	<input class="common-text" name="status" size="50" value="1" {if $goods.status==1}checked{/if} type="radio">新品
+                                	<input class="common-text" name="status" size="50" value="2" {if $goods.status==2}checked{/if} type="radio">上架
+                                	<input class="common-text" name="status" size="50" value="3" {if $goods.status==3}checked{/if} type="radio">下架
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>商品描述：</th>
+                                <td><textarea name="gdesc" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10">{$goods.gdesc}</textarea></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+{/block}

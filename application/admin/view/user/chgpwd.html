@@ -1,0 +1,53 @@
+{extend name="common/default"}
+{block name="main"}
+   <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/admin/user/dochgpwd" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+
+                            <tr>
+                                <th><i class="require-red">*</i>原始密码：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="upwd" size="50"  autocomplete="off" value="" type="text"><span>{:session('upwd')}</span>
+                                </td>
+                            </tr>
+
+							 <tr>
+                                <th><i class="require-red">*</i>新密码：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="new_upwd" size="50" value="" type="password"><span>{:session('new_upwd')}</span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th><i class="require-red">*</i>确认密码：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="reupwd" size="50" value="" type="password"><span>{:session('reupwd')}</span>
+                                </td>
+                            </tr>
+							
+						
+                           
+                           
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+{/block}

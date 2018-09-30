@@ -1,0 +1,71 @@
+{extend name="common/default"}
+{block name="main"}
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/admin/orders/update/{$orders.oid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>状态：</th>
+                            <td>
+                                <select name="status" id="catid" class="required">
+                                    <option {if $orders.status==1}selected{/if} value="1">未发货</option>
+                                    <option {if $orders.status==2}selected{/if} value="2">已发货</option>
+                                    <option {if $orders.status==3}selected{/if} value="3">交易完成</option>
+                                </select>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>订单号：</th>
+                                <td>
+                                    {$orders.oid}
+                                </td>
+                            </tr>
+							
+							<tr>
+                                <th><i class="require-red">*</i>收货人：</th>
+                                <td>
+                                    <input class="common-text required" id="title" size="50" name="rec" value="{$orders.rec}" type="text">
+                                </td>
+                            </tr>
+							
+							<tr>
+                                <th><i class="require-red">*</i>电话：</th>
+                                <td>
+                                    <input class="common-text required" id="title" size="50" name="tel" value="{$orders.tel}" type="text">
+                                </td>
+                            </tr>
+							
+							<tr>
+                                <th><i class="require-red">*</i>总金额：</th>
+                                <td>
+                                    {$orders.sum}
+                                </td>
+                            </tr>
+
+                           	<tr>
+                                <th><i class="require-red">*</i>总数量：</th>
+                                <td>
+                                    {$orders.cnt}
+                                </td>
+                            </tr>
+
+                           
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="保存修改" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{/block}
